@@ -2,8 +2,11 @@ package Task8;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
@@ -20,20 +23,21 @@ public class SearchLabel {
     private int getAllDucks() {
         driver.findElement(By.cssSelector(".list-vertical>[class='category-1']>a")).click();
         wait.until(presenceOfElementLocated(By.cssSelector("[title='Subcategory']")));
-        return driver.findElements(By.cssSelector("[class='product column shadow hover-light']")).size();
+        return driver.findElements(By.cssSelector("[class='listing-wrapper products']> li")).size();
     }
 
-    public void checkLabel() {
+    public void checkLabel() throws Exception {
 
         int ducks = getAllDucks();
+        List<WebElement> labels;
 
         for (int i = 1; i <= ducks; i++) {
-            try {
-                driver.findElement(By.cssSelector("[class='product column shadow hover-light']:nth-of-type(" + i +
-                        ") [class='sticker new']"));
-            } catch (org.openqa.selenium.NoSuchElementException ec) {
-                driver.findElement(By.cssSelector("[class='product column shadow hover-light']:nth-of-type(" + i +
-                        ") [class='sticker sale']"));
+
+            labels = driver.findElements(By.cssSelector
+                    ("[class='listing-wrapper products']> li:nth-of-type("+i+") [class*='sticker']"));
+
+            if (labels.size() != 1) {
+                throw new Exception("Labels incorrect");
             }
         }
     }

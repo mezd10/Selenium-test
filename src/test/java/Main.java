@@ -45,7 +45,7 @@ public class Main {
     }
 //тест к заданию 8(проверить, что у всех товаров есть стикеры)
     @Test
-    public void checkLabel() {
+    public void checkLabel() throws Exception {
         initialDriver.start();
         initialDriver.transition();
         SearchLabel searchLabel = new SearchLabel(initialDriver.gerDriver());
