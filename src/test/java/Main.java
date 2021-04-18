@@ -1,5 +1,6 @@
 import AuthLitecart.Authorization;
 import FirstTest.FirstTests;
+import Task7.CorrectionSearchElement;
 import Task7.SearchElement;
 import Task8.InitialDriver;
 import Task8.SearchLabel;
@@ -38,24 +39,8 @@ public class Main {
     public void search()  {
         authorization.start();
         authorization.authorization();
-        SearchElement searchElementCSS = new SearchElement(authorization.gerDriver());
-        searchElementCSS.checkAppearence();
-        searchElementCSS.checkCatalog();
-        searchElementCSS.checkCountries();
-        searchElementCSS.checkCurrencies();
-        searchElementCSS.checkCustomers();
-        searchElementCSS.checkGeoZones();
-        searchElementCSS.checkLanguages();
-        searchElementCSS.checkModules();
-        searchElementCSS.checkOrders();
-        searchElementCSS.checkPages();
-        searchElementCSS.checkReports();
-        searchElementCSS.checkSettings();
-        searchElementCSS.checkSlides();
-        searchElementCSS.checkTax();
-        searchElementCSS.checkTranslation();
-        searchElementCSS.checkUsers();
-        searchElementCSS.checkvQmods();
+        CorrectionSearchElement correctionSearchElement = new CorrectionSearchElement(authorization.gerDriver());
+        correctionSearchElement.checkElement();
         authorization.stop();
     }
 //тест к заданию 8(проверить, что у всех товаров есть стикеры)
