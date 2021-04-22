@@ -4,6 +4,8 @@ import Task7.CorrectionSearchElement;
 import Task7.SearchElement;
 import Task8.InitialDriver;
 import Task8.SearchLabel;
+import Task9.CheckCountries;
+import Task9.CheckGeoZone;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -52,4 +54,24 @@ public class Main {
         searchLabel.checkLabel();
         initialDriver.stop();
     }
+
+    //тест к 9 заданию
+    @Test
+    public void test9() {
+        authorization.start();
+        authorization.authorization();
+        CheckCountries checkCountries = new CheckCountries(authorization.gerDriver());
+        checkCountries.check();
+        authorization.stop();
+    }
+
+    @Test
+    public void test9_2() {
+        authorization.start();
+        authorization.authorization();
+        CheckGeoZone checkGeoZone = new CheckGeoZone(authorization.gerDriver());
+        checkGeoZone.check();
+        authorization.stop();
+    }
+
 }
