@@ -1,5 +1,6 @@
 import AuthLitecart.Authorization;
 import FirstTest.FirstTests;
+import Task10.CheckProductPage;
 import Task7.CorrectionSearchElement;
 import Task7.SearchElement;
 import Task8.InitialDriver;
@@ -74,4 +75,15 @@ public class Main {
         authorization.stop();
     }
 
+    @Test
+    public void test10() {
+        initialDriver.start();
+        initialDriver.transition();
+        CheckProductPage checkProductPage = new CheckProductPage(initialDriver.gerDriver());
+        checkProductPage.checkProductName();
+        checkProductPage.checkProductPrice();
+        checkProductPage.checkColorPrice();
+        checkProductPage.checkSizePrice();
+        initialDriver.stop();
+    }
 }
